@@ -1,0 +1,205 @@
+.talkbuddy-navbar {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 1002;
+  background: rgba(34, 39, 46, 0.78);
+  backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: 0 3px 24px 0 rgba(34, 39, 46, 0.11),
+              0 1.5px 10px 0 rgba(79, 140, 255, 0.07);
+  transition: background 0.25s, box-shadow 0.25s;
+  padding: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+/* Light mode */
+.talkbuddy-navbar:not(.dark) {
+  background: rgba(255, 255, 255, 0.82);
+  color: #22272e;
+  box-shadow: 0 3px 32px 0 rgba(34,39,46,0.08), 0 1.5px 8px 0 rgba(4, 187, 187, .09);
+}
+
+.talkbuddy-navbar .navbar-inner {
+  display: flex;
+  align-items: center;
+  min-height: 62px;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.talkbuddy-navbar .navbar-logo {
+  font-family: inherit;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  letter-spacing: -0.5px;
+  padding-right: 28px;
+  user-select: none;
+  gap: 7px;
+}
+
+.talkbuddy-navbar .navbar-logo-bubble {
+  font-size: 1.25rem;
+  color: var(--base-light, #4F8CFF);
+  filter: drop-shadow(0 0 3px #4f8cff77);
+}
+
+.talkbuddy-navbar .navbar-logo-text {
+  color: var(--primary, #4F8CFF);
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+
+.talkbuddy-navbar .navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.talkbuddy-navbar .navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.talkbuddy-navbar .navbar-links.right-links { margin-left: 1.7rem; }
+
+.talkbuddy-navbar .navbar-link {
+  text-decoration: none;
+  color: inherit;
+  padding: 8px 17px;
+  border-radius: 5px;
+  font-size: 1.03rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: background 0.18s, color 0.19s, box-shadow 0.23s;
+  position: relative;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+.talkbuddy-navbar .navbar-link:focus-visible {
+  box-shadow: 0 0 0 3px #4f8cff33;
+}
+
+/* HOVER EFFECT */
+.talkbuddy-navbar .navbar-link:hover, 
+.talkbuddy-navbar .navbar-link:active {
+  background: rgba(79, 140, 255, 0.11);
+  color: #4F8CFF;
+}
+
+.talkbuddy-navbar:not(.dark) .navbar-link:hover,
+.talkbuddy-navbar:not(.dark) .navbar-link:active {
+  background: rgba(238, 242, 255, 0.6);
+  color: #0058db;
+}
+
+.talkbuddy-navbar .navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.theme-toggle {
+  margin-left: 22px;
+  border: none;
+  outline: none;
+  background: rgba(34, 39, 46, 0.12);
+  backdrop-filter: blur(16px) saturate(145%);
+  border-radius: 50%;
+  padding: 0.29rem 0.37rem;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 1px 9px 0 rgba(34, 39, 46, 0.05);
+  transition: background 0.22s, box-shadow 0.18s;
+  position: relative;
+}
+
+.theme-toggle .theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  width: 23px;
+  height: 23px;
+  transition: filter 0.17s;
+}
+
+.theme-toggle .theme-toggle-slider {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  /* For potential animated highlight/flash effect */
+}
+
+.theme-toggle:hover, .theme-toggle:focus-visible {
+  background: rgba(79, 140, 255, 0.17);
+  box-shadow: 0 2.5px 12px 0 rgba(79, 140, 255, 0.08);
+}
+
+.theme-toggle.is-dark {
+  background: rgba(30, 30, 41, 0.38);
+}
+
+.theme-toggle.is-dark:hover,
+.theme-toggle.is-dark:focus-visible {
+  background: rgba(206, 221, 255, 0.16);
+}
+
+.theme-toggle .theme-toggle-icon svg {
+  display: block;
+  transition: transform 0.19s cubic-bezier(.68,.2,.31,1.11);
+}
+
+.theme-toggle .theme-toggle-icon svg {
+  /* Sun/moon icon color transitions */
+  filter: drop-shadow(0 0 2px #ffd16677);
+}
+
+@media (max-width: 700px) {
+  .talkbuddy-navbar .navbar-inner {
+    padding: 0 10px;
+  }
+  .talkbuddy-navbar .navbar-logo {
+    font-size: 1.2rem;
+    padding-right: 13px;
+  }
+  .talkbuddy-navbar .navbar-links .navbar-link {
+    padding: 7px 8px;
+  }
+  .navbar-links.right-links {
+    margin-left: .7rem;
+  }
+}
+
+@media (max-width: 510px) {
+  .talkbuddy-navbar .navbar-links {
+    gap: 0.22rem;
+  }
+  .talkbuddy-navbar .navbar-inner {
+    padding: 0 2px;
+  }
+  .theme-toggle {
+    min-width: 36px;
+    min-height: 36px;
+  }
+}
+
+/* Dark mode override for outer container */
+.talkbuddy-navbar.dark,
+body[data-theme='dark'] .talkbuddy-navbar {
+  background: rgba(34, 39, 46, 0.82);
+  color: #fff;
+  border-bottom: 1px solid rgba(176,188,202,0.07);
+  box-shadow: 0 3px 24px 0 rgba(34,39,46,0.13), 0 1.5px 10px 0 rgba(75, 195, 235, .08);
+}
