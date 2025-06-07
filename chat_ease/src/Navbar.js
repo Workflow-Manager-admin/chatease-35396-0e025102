@@ -14,7 +14,7 @@ function Navbar() {
 
   // Only "Chat", "About", "Help", and "Contact" links, right-aligned
   const navLinks = [
-    { text: 'Chat', href: '#' },
+    { text: 'Chat', href: '/chat' },
     { text: 'About', href: '#' },
     { text: 'Help', href: '#', ariaLabel: 'Get help or FAQ' },
     { text: 'Contact', href: '#', ariaLabel: 'Contact support' },

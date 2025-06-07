@@ -3,6 +3,10 @@ import './App.css';
 import Navbar from './Navbar';
 import LandingPage from './LandingPage';
 
+// Import react-router dependencies and ChatPage
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ChatPage from './ChatPage';
+
 // Context to provide theme and toggle logic globally
 export const ThemeContext = createContext({
   theme: 'light',
@@ -44,11 +48,15 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className="app">
-        <Navbar />
-        {/* Home route always renders LandingPage, pass theme only */}
-        <LandingPage />
-      </div>
+      <Router>
+        <div className="app">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/chat" element={<ChatPage />} />
+          </Routes>
+        </div>
+      </Router>
     </ThemeContext.Provider>
   );
 }
