@@ -5,8 +5,7 @@ import './Navbar.css';
 function Navbar() {
   /**
    * Navbar component for TalkBuddy.
-   * Fixed to top, supports light/dark mode, frosted glass style, app name/logo,
-   * modern nav links (left/right separation), and animated theme toggle.
+   * Modern layout: no logo dot/icon, "TalkBuddy" is a home link, only "Chat" and "About" on the right with theme toggle.
    */
   const [theme, setTheme] = useState(() => {
     // Check local storage for persisted theme, fallback to system theme
@@ -27,38 +26,22 @@ function Navbar() {
 
   const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
 
-  // Left-aligned nav links
-  const leftLinks = [
-    { text: 'Home', href: '#' },
+  // Only "Chat" and "About" links, right-aligned
+  const navLinks = [
     { text: 'Chat', href: '#' },
     { text: 'About', href: '#' }
-  ];
-  // Right-aligned nav links (before toggle)
-  const rightLinks = [
-    { text: 'Help', href: '#' },
-    { text: 'Contact', href: '#' }
   ];
 
   return (
     <nav className={`navbar talkbuddy-navbar${theme === 'dark' ? ' dark' : ''}`}>
       <div className="navbar-inner">
-        <div className="navbar-left">
-          <span className="navbar-logo">
-            {/* Simple, modern logo: a colored chat bubble + text */}
-            <span className="navbar-logo-bubble" aria-label="App Logo">&#9679;</span>
-            <span className="navbar-logo-text">TalkBuddy</span>
-          </span>
-          <div className="navbar-links">
-            {leftLinks.map(link => (
-              <a key={link.text} href={link.href} className="navbar-link">
-                {link.text}
-              </a>
-            ))}
-          </div>
-        </div>
+        {/* No left links. Only logo as link to home */}
+        <a href="/" className="navbar-logo home-link" style={{ textDecoration: 'none' }}>
+          <span className="navbar-logo-text">TalkBuddy</span>
+        </a>
         <div className="navbar-right">
           <div className="navbar-links right-links">
-            {rightLinks.map(link => (
+            {navLinks.map(link => (
               <a key={link.text} href={link.href} className="navbar-link">
                 {link.text}
               </a>

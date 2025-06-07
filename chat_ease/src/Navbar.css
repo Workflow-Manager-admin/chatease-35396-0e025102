@@ -34,19 +34,14 @@
 .talkbuddy-navbar .navbar-logo {
   font-family: inherit;
   font-weight: 800;
-  display: flex;
-  align-items: center;
+  display: block;
   font-size: 1.6rem;
   letter-spacing: -0.5px;
-  padding-right: 28px;
+  padding-right: 0;
   user-select: none;
-  gap: 7px;
-}
-
-.talkbuddy-navbar .navbar-logo-bubble {
-  font-size: 1.25rem;
-  color: var(--base-light, #4F8CFF);
-  filter: drop-shadow(0 0 3px #4f8cff77);
+  /* No gap, single text */
+  color: inherit;
+  background: none;
 }
 
 .talkbuddy-navbar .navbar-logo-text {
@@ -55,9 +50,21 @@
   letter-spacing: .4px;
 }
 
+/* Style for making navbar-logo (TalkBuddy) act as a link */
+.talkbuddy-navbar .navbar-logo.home-link {
+  text-decoration: none;
+  outline: none;
+}
+.talkbuddy-navbar .navbar-logo.home-link:focus-visible {
+  box-shadow: 0 0 0 3px #4f8cff33;
+}
+.talkbuddy-navbar .navbar-logo.home-link:hover .navbar-logo-text {
+  color: #0058db;
+}
+
+/* Remove left-aligned container since it's not used anymore */
 .talkbuddy-navbar .navbar-left {
-  display: flex;
-  align-items: center;
+  display: none;
 }
 
 .talkbuddy-navbar .navbar-links {
@@ -66,7 +73,10 @@
   gap: 0.6rem;
 }
 
-.talkbuddy-navbar .navbar-links.right-links { margin-left: 1.7rem; }
+/* Only show margin for right links since no left links */
+.talkbuddy-navbar .navbar-links.right-links {
+  margin-left: 0;
+}
 
 .talkbuddy-navbar .navbar-link {
   text-decoration: none;
