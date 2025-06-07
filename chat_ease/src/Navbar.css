@@ -70,14 +70,22 @@
 .talkbuddy-navbar .navbar-links {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.6rem; /* space between all navbar links */
 }
 
-/* Only show margin for right links since no left links */
+/* On mobile, reduce gap so all links fit */
+@media (max-width: 510px) {
+  .talkbuddy-navbar .navbar-links {
+    gap: 0.22rem;
+  }
+}
+
+/* Right-aligned links (all main nav links are here) */
 .talkbuddy-navbar .navbar-links.right-links {
   margin-left: 0;
 }
 
+/* Style for nav links (all links: Chat, About, Help, Contact) */
 .talkbuddy-navbar .navbar-link {
   text-decoration: none;
   color: inherit;

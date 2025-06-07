@@ -26,10 +26,12 @@ function Navbar() {
 
   const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
 
-  // Only "Chat" and "About" links, right-aligned
+  // Only "Chat", "About", "Help", and "Contact" links, right-aligned
   const navLinks = [
     { text: 'Chat', href: '#' },
-    { text: 'About', href: '#' }
+    { text: 'About', href: '#' },
+    { text: 'Help', href: '#', ariaLabel: 'Get help or FAQ' },
+    { text: 'Contact', href: '#', ariaLabel: 'Contact support' },
   ];
 
   return (
@@ -42,7 +44,13 @@ function Navbar() {
         <div className="navbar-right">
           <div className="navbar-links right-links">
             {navLinks.map(link => (
-              <a key={link.text} href={link.href} className="navbar-link">
+              <a
+                key={link.text}
+                href={link.href}
+                className="navbar-link"
+                tabIndex={0}
+                aria-label={link.ariaLabel ? link.ariaLabel : undefined}
+              >
                 {link.text}
               </a>
             ))}
