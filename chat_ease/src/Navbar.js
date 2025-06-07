@@ -1,30 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import './Navbar.css';
+import { ThemeContext } from './App';
 
 // PUBLIC_INTERFACE
 function Navbar() {
   /**
    * Navbar component for TalkBuddy.
-   * Modern layout: no logo dot/icon, "TalkBuddy" is a home link, only "Chat" and "About" on the right with theme toggle.
+   * Consumes theme state and toggle logic from ThemeContext (provided by App).
+   * Only one global toggle in Navbar, instantly updates the entire app.
    */
-  const [theme, setTheme] = useState(() => {
-    // Check local storage for persisted theme, fallback to system theme
-    if (typeof window !== 'undefined' && window.localStorage) {
-      return localStorage.getItem('theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light');
-    }
-    return 'light';
-  });
 
-  useEffect(() => {
-    // Set document body class for theme and persist
-    document.body.dataset.theme = theme;
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   // Only "Chat", "About", "Help", and "Contact" links, right-aligned
   const navLinks = [
